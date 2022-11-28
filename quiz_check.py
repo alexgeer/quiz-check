@@ -5,9 +5,14 @@ filename = sys.argv[1]
 
 assert filename.endswith('.yaml') or filename.endswith('.yml'), f"'{filename}' must be .yaml or .yml extension"
 
-
-with open(filename, "r") as file:
-    quiz = yaml.safe_load(file)
+try:
+    with open(filename, "r") as file:
+        quiz = yaml.safe_load(file)
+except yaml.parser.ParserError as err:
+    print(err)
+    exit()
+finally:
+    file.close()
 
 fields = ["title", "version", "quizVersion", "questions", "title"]
 
