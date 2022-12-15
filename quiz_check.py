@@ -43,6 +43,6 @@ for i, question in enumerate(quiz["questions"]):
     assert has_correct, f"question {i} does not have answer where correct == True"
 
 print(preview)
-with open("quiz.md", "w") as file:
+with open("quiz_preview.md", "w") as file:
         file.write(preview)
 print("No problems found!")
