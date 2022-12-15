@@ -38,9 +38,11 @@ for i, question in enumerate(quiz["questions"]):
             choice["correct"] == bool
         ), f"question {j} 'correct' field is not type 'bool'"
         choice_text = choice["text"].replace("\n", "\\n").replace("\\\"", "\"")
-        preview += f"    - {choice_text} {'-correct' if choice['correct'] else ''}\n"
+        preview += f"  - {choice_text} {'-correct' if choice['correct'] else ''}\n"
     preview += "\n"
     assert has_correct, f"question {i} does not have answer where correct == True"
 
 print(preview)
+with open("quiz.md", "w") as file:
+        file.write(preview)
 print("No problems found!")
