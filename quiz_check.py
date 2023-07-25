@@ -23,21 +23,21 @@ assert len(quiz["questions"]) == 6
 
 preview = ""
 
-for i, question in enumerate(quiz["questions"]):
+for i, question in enumerate(quiz["questions"], 1):
     assert "question" in question, f"question {i} missing 'question' field"
     assert "choices" in question, f"question {i} missing 'choices' field"
     has_correct = False
     q_text = question['question'].replace("\\n", "\n").replace("\\\"", "\"")
-    preview += f"{i+1}. {q_text}\n"
-    for j, choice in enumerate(question["choices"]):
-        assert "text" in choice, f"question {j} missing 'text' field"
-        assert "correct" in choice, f"question {j} missing 'correct' field"
+    preview += f"{i}. {q_text}\n"
+    for j, choice in enumerate(question["choices"], 1):
+        assert "text" in choice, f"question {i} choice {j} missing 'text' field"
+        assert "correct" in choice, f"question {i} choice {j}  missing 'correct' field"
         if choice["correct"]:
-            assert not has_correct, f"question {j} has >1 answer marked correct"
+            assert not has_correct, f"question {i} choice {j} >1 answer marked correct"
             has_correct = True
         assert type(
             choice["correct"] == bool
-        ), f"question {j} 'correct' field is not type 'bool'"
+        ), f"question {i} choice {j}  'correct' field is not type 'bool'"
         choice_text = choice["text"].replace("\n", "\\n").replace("\\\"", "\"")
         preview += f"  - {choice_text} {'-correct' if choice['correct'] else ''}\n"
     preview += "\n"
