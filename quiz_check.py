@@ -14,7 +14,7 @@ except yaml.parser.ParserError as err:
 finally:
     file.close()
 
-fields = ["title", "version", "quizVersion", "questions", "title"]
+fields = ["title", "version", "quizVersion", "questions"]
 
 for field in fields:
     assert field in quiz, f"field '{field}' missing from quiz"
@@ -33,6 +33,7 @@ for i, question in enumerate(quiz["questions"]):
         assert "text" in choice, f"question {j} missing 'text' field"
         assert "correct" in choice, f"question {j} missing 'correct' field"
         if choice["correct"]:
+            assert not has_correct, f"question {j} has >1 answer marked correct"
             has_correct = True
         assert type(
             choice["correct"] == bool
