@@ -2,6 +2,8 @@
 
 ## installation and setup
 ```
+> git clone https://github.com/alexgeer/quiz-check
+> cd quiz-check
 > python -m venv env
 > env\Scripts\activate
 > pip install -r requirements.txt
