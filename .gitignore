@@ -3,3 +3,5 @@ venv
 *.yaml
 *.yml
 *.md
+!quiz_template.yaml
+!README.md

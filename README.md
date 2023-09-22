@@ -21,6 +21,10 @@ create your .yaml file in the directory and run
 ```bash
  python quiz_check.py yourquiz.yaml
  ```
+or create a file called `quiz.yaml` and use the `check.bat` or `check.sh` script
+```bash
 
+./check
+ ```
 
 Put your quiz in a file named `quiz.yaml` to use the `check` script. Using the `check` script doesn't require activating the virtual environment.
